@@ -1,24 +1,106 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Layout from './components/Layout';
+import ManageCourses from './pages/ManageCourses';
+import ManageUsers from './pages/ManageUsers';
+import ManageSessions from './pages/ManageSessions';
+import TeacherDashboard from './pages/TeacherDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import ManagePayments from './pages/ManagePayments';
+import ManageEnrollments from './pages/ManageEnrollments';
+import StudentDashboard from './pages/StudentDashboard';
+import TeacherAttendance from './pages/TeacherAttendance';
+import StudentPayments from './pages/StudentPayments';
+import StudentAttendance from './pages/StudentAttendance';
+import ManageAttendance from './pages/ManageAttendance';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Route */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Wrapped Protected Routes inside the Layout */}
+          <Route element={<Layout />}>
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={
+              <ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>
+            } />
+            <Route path="/admin/courses" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageCourses />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/users" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageUsers />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/sessions" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageSessions />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/enrollments" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageEnrollments />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/payments" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManagePayments />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/attendance" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageAttendance />
+              </ProtectedRoute>
+            } />
+
+            {/* Teacher Routes */}
+            <Route path="/teacher" element={
+              <ProtectedRoute allowedRoles={['teacher']}><TeacherDashboard /></ProtectedRoute>
+            } />
+            <Route path="/teacher/attendance" element={
+              <ProtectedRoute allowedRoles={['teacher']}><TeacherAttendance /></ProtectedRoute>
+            } />
+            <Route path="/teacher/courses" element={
+              <ProtectedRoute allowedRoles={['teacher']}><TeacherDashboard /></ProtectedRoute>
+            } />
+
+            {/* Student Routes */}
+            <Route path="/student" element={
+              <ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>
+            } />
+            <Route path="/student/payments" element={
+              <ProtectedRoute allowedRoles={['student']}><StudentPayments /></ProtectedRoute>
+            } />
+            <Route path="/student/attendance" element={
+              <ProtectedRoute allowedRoles={['student']}><StudentAttendance /></ProtectedRoute>
+            } />
+            <Route path="/student/courses" element={
+              <ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>
+            } />
+
+          </Route>
+
+          {/* Default Redirect */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+    </ThemeProvider>
   );
 }
 

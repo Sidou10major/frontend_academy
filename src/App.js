@@ -18,6 +18,10 @@ import StudentPayments from './pages/StudentPayments';
 import StudentAttendance from './pages/StudentAttendance';
 import ManageAttendance from './pages/ManageAttendance';
 import ManageTeacherAttendance from './pages/ManageTeacherAttendance';
+import AnalyticsDashboard from './pages/AnalyticsDashboard';
+import ManageAnnouncements from './pages/ManageAnnouncements';
+import TeacherGradeBook from './pages/TeacherGradeBook';
+import StudentProgress from './pages/StudentProgress';
 
 function App() {
   return (
@@ -34,6 +38,16 @@ function App() {
             {/* Admin Routes */}
             <Route path="/admin" element={
               <ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>
+            } />
+            <Route path="/admin/analytics" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AnalyticsDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/announcements" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageAnnouncements />
+              </ProtectedRoute>
             } />
             <Route path="/admin/courses" element={
               <ProtectedRoute allowedRoles={['admin']}>
@@ -82,6 +96,9 @@ function App() {
             <Route path="/teacher/attendance" element={
               <ProtectedRoute allowedRoles={['teacher']}><TeacherAttendance /></ProtectedRoute>
             } />
+            <Route path="/teacher/gradebook" element={
+              <ProtectedRoute allowedRoles={['teacher']}><TeacherGradeBook /></ProtectedRoute>
+            } />
             <Route path="/teacher/courses" element={
               <ProtectedRoute allowedRoles={['teacher']}><TeacherDashboard /></ProtectedRoute>
             } />
@@ -89,6 +106,9 @@ function App() {
             {/* Student Routes */}
             <Route path="/student" element={
               <ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>
+            } />
+            <Route path="/student/progress" element={
+              <ProtectedRoute allowedRoles={['student']}><StudentProgress /></ProtectedRoute>
             } />
             <Route path="/student/payments" element={
               <ProtectedRoute allowedRoles={['student']}><StudentPayments /></ProtectedRoute>

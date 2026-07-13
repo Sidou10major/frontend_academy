@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import logo from '../assets/academy_logo.png';
+import NotificationBell from './NotificationBell';
 
 const Layout = () => {
     const { user, logout } = useContext(AuthContext);
@@ -44,6 +45,8 @@ const Layout = () => {
                     {user?.role === 'admin' && (
                         <>
                             <li><Link to="/admin" className={navLinkClass('/admin')}>📊 {t('sidebar.dashboard')}</Link></li>
+                            <li><Link to="/admin/analytics" className={navLinkClass('/admin/analytics')}>📈 {t('sidebar.analytics')}</Link></li>
+                            <li><Link to="/admin/announcements" className={navLinkClass('/admin/announcements')}>📢 {t('sidebar.announcements')}</Link></li>
                             <li><Link to="/admin/courses" className={navLinkClass('/admin/courses')}>📚 {t('sidebar.manageCourses')}</Link></li>
                             <li><Link to="/admin/users" className={navLinkClass('/admin/users')}>👥 {t('sidebar.manageUsers')}</Link></li>
                             <li><Link to="/admin/sessions" className={navLinkClass('/admin/sessions')}>📅 {t('sidebar.classScheduler')}</Link></li>
@@ -58,12 +61,14 @@ const Layout = () => {
                         <>
                             <li><Link to="/teacher" className={navLinkClass('/teacher')}>📅 {t('sidebar.mySchedule')}</Link></li>
                             <li><Link to="/teacher/attendance" className={navLinkClass('/teacher/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>
+                            <li><Link to="/teacher/gradebook" className={navLinkClass('/teacher/gradebook')}>📝 {t('sidebar.gradeBook')}</Link></li>
                         </>
                     )}
 
                     {user?.role === 'student' && (
                         <>
                             <li><Link to="/student" className={navLinkClass('/student')}>📚 {t('sidebar.myClasses')}</Link></li>
+                            <li><Link to="/student/progress" className={navLinkClass('/student/progress')}>📈 {t('sidebar.myProgress')}</Link></li>
                             <li><Link to="/student/attendance" className={navLinkClass('/student/attendance')}>✅ {t('sidebar.myAttendance')}</Link></li>
                             <li><Link to="/student/payments" className={navLinkClass('/student/payments')}>💳 {t('sidebar.myPayments')}</Link></li>
                         </>
@@ -71,6 +76,8 @@ const Layout = () => {
                 </ul>
 
                 <div className="sidebar-controls">
+                    <NotificationBell />
+
                     <select
                         onChange={changeLanguage}
                         value={i18n.language}

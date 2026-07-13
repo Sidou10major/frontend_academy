@@ -49,6 +49,7 @@ const Layout = () => {
                             <li><Link to="/admin/sessions" className={navLinkClass('/admin/sessions')}>📅 {t('sidebar.classScheduler')}</Link></li>
                             <li><Link to="/admin/enrollments" className={navLinkClass('/admin/enrollments')}>📝 {t('sidebar.enrollments')}</Link></li>
                             <li><Link to="/admin/attendance" className={navLinkClass('/admin/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>
+                            <li><Link to="/admin/teacher-attendance" className={navLinkClass('/admin/teacher-attendance')}>🧑‍🏫 {t('sidebar.teacherAttendance')}</Link></li>
                             <li><Link to="/admin/payments" className={navLinkClass('/admin/payments')}>💰 {t('sidebar.finances')}</Link></li>
                         </>
                     )}

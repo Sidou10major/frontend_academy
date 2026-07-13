@@ -17,6 +17,7 @@ import TeacherAttendance from './pages/TeacherAttendance';
 import StudentPayments from './pages/StudentPayments';
 import StudentAttendance from './pages/StudentAttendance';
 import ManageAttendance from './pages/ManageAttendance';
+import ManageTeacherAttendance from './pages/ManageTeacherAttendance';
 
 function App() {
   return (
@@ -65,6 +66,12 @@ function App() {
             <Route path="/admin/attendance" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <ManageAttendance />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/teacher-attendance" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageTeacherAttendance />
               </ProtectedRoute>
             } />
 

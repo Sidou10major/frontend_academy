@@ -47,6 +47,9 @@ const Layout = () => {
                             <li><Link to="/admin" className={navLinkClass('/admin')}>📊 {t('sidebar.dashboard')}</Link></li>
                             <li><Link to="/admin/analytics" className={navLinkClass('/admin/analytics')}>📈 {t('sidebar.analytics')}</Link></li>
                             <li><Link to="/admin/announcements" className={navLinkClass('/admin/announcements')}>📢 {t('sidebar.announcements')}</Link></li>
+                            <li><Link to="/admin/calendar" className={navLinkClass('/admin/calendar')}>📅 {t('sidebar.calendar')}</Link></li>
+                            <li><Link to="/admin/certificates" className={navLinkClass('/admin/certificates')}>📜 {t('sidebar.certificates')}</Link></li>
+                            <li><Link to="/messages" className={navLinkClass('/messages')}>💬 {t('sidebar.messages')}</Link></li>
                             <li><Link to="/admin/courses" className={navLinkClass('/admin/courses')}>📚 {t('sidebar.manageCourses')}</Link></li>
                             <li><Link to="/admin/users" className={navLinkClass('/admin/users')}>👥 {t('sidebar.manageUsers')}</Link></li>
                             <li><Link to="/admin/sessions" className={navLinkClass('/admin/sessions')}>📅 {t('sidebar.classScheduler')}</Link></li>
@@ -60,6 +63,8 @@ const Layout = () => {
                     {user?.role === 'teacher' && (
                         <>
                             <li><Link to="/teacher" className={navLinkClass('/teacher')}>📅 {t('sidebar.mySchedule')}</Link></li>
+                            <li><Link to="/teacher/calendar" className={navLinkClass('/teacher/calendar')}>📅 {t('sidebar.calendar')}</Link></li>
+                            <li><Link to="/messages" className={navLinkClass('/messages')}>💬 {t('sidebar.messages')}</Link></li>
                             <li><Link to="/teacher/attendance" className={navLinkClass('/teacher/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>
                             <li><Link to="/teacher/gradebook" className={navLinkClass('/teacher/gradebook')}>📝 {t('sidebar.gradeBook')}</Link></li>
                         </>
@@ -68,6 +73,8 @@ const Layout = () => {
                     {user?.role === 'student' && (
                         <>
                             <li><Link to="/student" className={navLinkClass('/student')}>📚 {t('sidebar.myClasses')}</Link></li>
+                            <li><Link to="/student/calendar" className={navLinkClass('/student/calendar')}>📅 {t('sidebar.calendar')}</Link></li>
+                            <li><Link to="/messages" className={navLinkClass('/messages')}>💬 {t('sidebar.messages')}</Link></li>
                             <li><Link to="/student/progress" className={navLinkClass('/student/progress')}>📈 {t('sidebar.myProgress')}</Link></li>
                             <li><Link to="/student/attendance" className={navLinkClass('/student/attendance')}>✅ {t('sidebar.myAttendance')}</Link></li>
                             <li><Link to="/student/payments" className={navLinkClass('/student/payments')}>💳 {t('sidebar.myPayments')}</Link></li>

@@ -22,6 +22,10 @@ import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import ManageAnnouncements from './pages/ManageAnnouncements';
 import TeacherGradeBook from './pages/TeacherGradeBook';
 import StudentProgress from './pages/StudentProgress';
+import CalendarView from './pages/CalendarView';
+import Messages from './pages/Messages';
+import ManageCertificates from './pages/ManageCertificates';
+import CertificateView from './pages/CertificateView';
 
 function App() {
   return (
@@ -47,6 +51,16 @@ function App() {
             <Route path="/admin/announcements" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <ManageAnnouncements />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/calendar" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <CalendarView />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/certificates" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageCertificates />
               </ProtectedRoute>
             } />
             <Route path="/admin/courses" element={
@@ -93,6 +107,11 @@ function App() {
             <Route path="/teacher" element={
               <ProtectedRoute allowedRoles={['teacher']}><TeacherDashboard /></ProtectedRoute>
             } />
+            <Route path="/teacher/calendar" element={
+              <ProtectedRoute allowedRoles={['teacher']}>
+                <CalendarView />
+              </ProtectedRoute>
+            } />
             <Route path="/teacher/attendance" element={
               <ProtectedRoute allowedRoles={['teacher']}><TeacherAttendance /></ProtectedRoute>
             } />
@@ -107,6 +126,11 @@ function App() {
             <Route path="/student" element={
               <ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>
             } />
+            <Route path="/student/calendar" element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <CalendarView />
+              </ProtectedRoute>
+            } />
             <Route path="/student/progress" element={
               <ProtectedRoute allowedRoles={['student']}><StudentProgress /></ProtectedRoute>
             } />
@@ -118,6 +142,18 @@ function App() {
             } />
             <Route path="/student/courses" element={
               <ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>
+            } />
+
+            {/* Shared Messaging & Certificate Views */}
+            <Route path="/messages" element={
+              <ProtectedRoute allowedRoles={['admin', 'teacher', 'student']}>
+                <Messages />
+              </ProtectedRoute>
+            } />
+            <Route path="/certificates/:id" element={
+              <ProtectedRoute allowedRoles={['admin', 'teacher', 'student']}>
+                <CertificateView />
+              </ProtectedRoute>
             } />
 
           </Route>

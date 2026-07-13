@@ -1167,3 +1167,41 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ========== PRINT MEDIA STYLES (CERTIFICATE) ========== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .sidebar,
+  .no-print {
+    display: none !important;
+  }
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .app-layout {
+    display: block !important;
+  }
+  .certificate-page {
+    box-shadow: none !important;
+    border-color: #6c5ce7 !important;
+    margin: 0 !important;
+    padding: 30px !important;
+    height: 100vh !important;
+    page-break-after: avoid;
+  }
+}
+
+/* ========== EXTRA INTERACTION EFFECTS ========== */
+.calendar-cell-hover:hover {
+  transform: scale(1.02);
+  border-color: var(--primary-light) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-item:hover {
+  background: var(--bg-card-hover) !important;
+}

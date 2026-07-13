@@ -33,11 +33,13 @@ const ManageTeacherAttendance = () => {
     // Fetch sessions, teachers, and records on mount
     useEffect(() => {
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Re-fetch records when filters change
     useEffect(() => {
         fetchRecords();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterTeacherId, filterDate]);
 
     const fetchData = async () => {

@@ -67,7 +67,7 @@ const Login = () => {
                 {/* Brand */}
                 <div className="brand-logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
                     <img src={logo} alt="ISI Logo" style={{ width: '85px', height: '85px', borderRadius: '18px', objectFit: 'cover', boxShadow: 'var(--shadow-md)' }} />
-                    <span style={{ fontSize: '1.45rem', fontWeight: '800', color: 'var(--text-primary)', textAlign: 'center', letterSpacing: '-0.5px' }}>{t('sidebar.title')}</span>
+                    <h1 style={{ fontSize: '1.45rem', fontWeight: '800', color: 'var(--text-primary)', textAlign: 'center', letterSpacing: '-0.5px', margin: 0 }}>{t('sidebar.title')}</h1>
                 </div>
                 <h2>{t('login.title')}</h2>
                 <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '28px', fontSize: '0.9rem' }}>

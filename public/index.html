@@ -3,11 +3,32 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" href="%PUBLIC_URL%/academy_logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <meta name="description" content="I Speak International is a premier language school offering expert-led English, French, and Arabic courses for students and professionals. Access schedules, dashboards, and custom learning portals." />
+  <meta name="keywords" content="I Speak International, ISpeakInternational, language learning, language academy, learn English, learn French, learn Arabic, language portal, academy portal" />
+  <meta name="author" content="I Speak International" />
+  
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://frontend-academy-blue.vercel.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://frontend-academy-blue.vercel.app/" />
+  <meta property="og:title" content="I Speak International | Language Learning Academy" />
+  <meta property="og:description" content="Access the I Speak International academy portal. Join expert courses in English, French, and Arabic designed for rapid language acquisition." />
+  <meta property="og:image" content="https://frontend-academy-blue.vercel.app/academy_logo.png" />
+  <meta property="og:site_name" content="I Speak International" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://frontend-academy-blue.vercel.app/" />
+  <meta name="twitter:title" content="I Speak International | Language Learning Academy" />
+  <meta name="twitter:description" content="Access the I Speak International academy portal. Join expert courses in English, French, and Arabic designed for rapid language acquisition." />
+  <meta name="twitter:image" content="https://frontend-academy-blue.vercel.app/academy_logo.png" />
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/academy_logo.png" />
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -22,7 +43,25 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>ISpeakInternational</title>
+  <title>I Speak International | Language Learning Academy</title>
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "I Speak International",
+    "alternateName": "ISpeakInternational",
+    "url": "https://frontend-academy-blue.vercel.app",
+    "logo": "https://frontend-academy-blue.vercel.app/academy_logo.png",
+    "description": "I Speak International is a professional language academy offering English, French, and Arabic language courses for students and professionals.",
+    "knowsAbout": ["Language Learning", "English Language Courses", "French Language Courses", "Arabic Language Courses"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "DZ"
+    }
+  }
+  </script>
 </head>
 
 <body>

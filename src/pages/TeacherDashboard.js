@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import { useTranslation } from 'react-i18next';
+import SessionMaterials from '../components/SessionMaterials';
 
 const TeacherDashboard = () => {
     const { t } = useTranslation();
@@ -105,7 +106,7 @@ const TeacherDashboard = () => {
 
                 {/* RIGHT: Roster & Attendance */}
                 <div>
-                    {selectedSession ? (
+                    {selectedSession ? (<>
                         <div className="card">
                             <div className="card-header">📋 {selectedSession.course?.title} - {t('teacherDash.roster')}</div>
 
@@ -154,6 +155,14 @@ const TeacherDashboard = () => {
                                 </form>
                             )}
                         </div>
+
+                        <div className="card" style={{ marginTop: '24px' }}>
+                             <div className="card-header">📁 {t('materials.cardTitle') || 'Course Materials & Syllabi'}</div>
+                             <div style={{ padding: '20px' }}>
+                                 <SessionMaterials sessionId={selectedSession._id} />
+                             </div>
+                        </div>
+                        </>
                     ) : (
                         <div style={{ display: 'flex', height: '300px', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-card)', borderRadius: 'var(--radius-md)', border: '2px dashed var(--border)', color: 'var(--text-muted)' }}>
                             <h3>👈 {t('teacherDash.selectClass')}</h3>

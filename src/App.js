@@ -26,6 +26,9 @@ import CalendarView from './pages/CalendarView';
 import Messages from './pages/Messages';
 import ManageCertificates from './pages/ManageCertificates';
 import CertificateView from './pages/CertificateView';
+import TeacherSelfService from './pages/TeacherSelfService';
+import ManagePayroll from './pages/ManagePayroll';
+import PlacementTestView from './pages/PlacementTestView';
 
 function App() {
   return (
@@ -35,6 +38,8 @@ function App() {
         <Routes>
           {/* Public Route */}
           <Route path="/login" element={<Login />} />
+          <Route path="/certificates/:id" element={<CertificateView />} />
+          <Route path="/placement-test" element={<PlacementTestView />} />
 
           {/* Wrapped Protected Routes inside the Layout */}
           <Route element={<Layout />}>
@@ -91,6 +96,12 @@ function App() {
               </ProtectedRoute>
             } />
 
+            <Route path="/admin/payroll" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManagePayroll />
+              </ProtectedRoute>
+            } />
+
             <Route path="/admin/attendance" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <ManageAttendance />
@@ -106,6 +117,9 @@ function App() {
             {/* Teacher Routes */}
             <Route path="/teacher" element={
               <ProtectedRoute allowedRoles={['teacher']}><TeacherDashboard /></ProtectedRoute>
+            } />
+            <Route path="/teacher/portal" element={
+              <ProtectedRoute allowedRoles={['teacher']}><TeacherSelfService /></ProtectedRoute>
             } />
             <Route path="/teacher/calendar" element={
               <ProtectedRoute allowedRoles={['teacher']}>
@@ -148,11 +162,6 @@ function App() {
             <Route path="/messages" element={
               <ProtectedRoute allowedRoles={['admin', 'teacher', 'student']}>
                 <Messages />
-              </ProtectedRoute>
-            } />
-            <Route path="/certificates/:id" element={
-              <ProtectedRoute allowedRoles={['admin', 'teacher', 'student']}>
-                <CertificateView />
               </ProtectedRoute>
             } />
 

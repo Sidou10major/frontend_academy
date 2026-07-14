@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import { useTranslation } from 'react-i18next';
+import SessionMaterials from '../components/SessionMaterials';
 
 const StudentDashboard = () => {
     const { t } = useTranslation();
@@ -80,10 +81,12 @@ const StudentDashboard = () => {
                                                 🔗 {t('studentDash.joinClass')}
                                             </a>
                                         ) : (
-                                            <div className="alert alert-warning" style={{ marginBottom: 0, padding: '8px 12px', fontSize: '0.85rem' }}>
+                                            <div className="alert alert-warning" style={{ marginBottom: '12px', padding: '8px 12px', fontSize: '0.85rem' }}>
                                                 {t('studentDash.noLink')}
                                             </div>
                                         )}
+
+                                        <SessionMaterials sessionId={session._id} />
                                     </div>
                                 );
                             })}
@@ -122,6 +125,17 @@ const StudentDashboard = () => {
                                 ))}
                             </div>
                         )}
+                    </div>
+
+                    {/* Placement Test Card */}
+                    <div className="card-header" style={{ marginBottom: '16px', marginTop: '24px' }}>📝 {t('studentDash.placementTitle') || 'Placement Test'}</div>
+                    <div className="card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
+                            {t('studentDash.placementDesc') || 'Want to test your proficiency level again? Try our online placement test.'}
+                        </p>
+                        <a href="/placement-test" className="btn btn-primary btn-sm" style={{ textDecoration: 'none', textAlign: 'center' }}>
+                            ✍️ {t('studentDash.placementBtn') || 'Take Placement Test'}
+                        </a>
                     </div>
                 </div>
             </div>

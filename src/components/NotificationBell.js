@@ -122,14 +122,22 @@ const NotificationBell = () => {
                                     key={notif._id}
                                     className={`notification-item ${!notif.isRead ? 'unread' : ''}`}
                                     onClick={() => !notif.isRead && handleMarkRead(notif._id)}
+                                    title={notif.announcement?.content || notif.content || ''}
                                 >
-                                    <div className={`priority-dot ${notif.announcement?.priority || 'normal'}`} />
+                                    <div className={`priority-dot ${notif.announcement?.priority || 'high'}`} />
                                     <div className="notif-content">
-                                        <div className="notif-title">
-                                            {notif.announcement?.title || t('notifications.untitled')}
+                                        <div className="notif-title" style={{ fontWeight: !notif.isRead ? 'bold' : 'normal' }}>
+                                            {notif.announcement?.title || notif.title || t('notifications.untitled') || 'Notification'}
                                         </div>
+                                        {notif.content && (
+                                            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                                                {notif.content}
+                                            </div>
+                                        )}
                                         <div className="notif-time">
-                                            {notif.announcement?.author?.firstName} {notif.announcement?.author?.lastName} · {timeAgo(notif.createdAt)}
+                                            {notif.announcement?.author 
+                                                ? `${notif.announcement.author.firstName} ${notif.announcement.author.lastName}` 
+                                                : t('notifications.system') || 'System'} · {timeAgo(notif.createdAt)}
                                         </div>
                                     </div>
                                 </div>

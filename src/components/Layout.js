@@ -57,12 +57,14 @@ const Layout = () => {
                             <li><Link to="/admin/attendance" className={navLinkClass('/admin/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>
                             <li><Link to="/admin/teacher-attendance" className={navLinkClass('/admin/teacher-attendance')}>🧑‍🏫 {t('sidebar.teacherAttendance')}</Link></li>
                             <li><Link to="/admin/payments" className={navLinkClass('/admin/payments')}>💰 {t('sidebar.finances')}</Link></li>
+                            <li><Link to="/admin/payroll" className={navLinkClass('/admin/payroll')}>💵 {t('sidebar.payroll') || 'Payroll Tracker'}</Link></li>
                         </>
                     )}
 
                     {user?.role === 'teacher' && (
                         <>
                             <li><Link to="/teacher" className={navLinkClass('/teacher')}>📅 {t('sidebar.mySchedule')}</Link></li>
+                            <li><Link to="/teacher/portal" className={navLinkClass('/teacher/portal')}>🧑‍🏫 {t('sidebar.teacherPortal') || 'Self-Service Portal'}</Link></li>
                             <li><Link to="/teacher/calendar" className={navLinkClass('/teacher/calendar')}>📅 {t('sidebar.calendar')}</Link></li>
                             <li><Link to="/messages" className={navLinkClass('/messages')}>💬 {t('sidebar.messages')}</Link></li>
                             <li><Link to="/teacher/attendance" className={navLinkClass('/teacher/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>

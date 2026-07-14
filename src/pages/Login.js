@@ -103,6 +103,13 @@ const Login = () => {
                         {t('login.submit')}
                     </button>
                 </form>
+
+                <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.88rem' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>{t('login.placementPrompt') || 'Not sure about your level?'} </span>
+                    <a href="/placement-test" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                        {t('login.placementLink') || 'Take Placement Test 📝'}
+                    </a>
+                </div>
             </div>
         </div>
     );

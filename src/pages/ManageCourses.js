@@ -11,7 +11,7 @@ const ManageCourses = () => {
     const [editingCourseId, setEditingCourseId] = useState(null);
 
     const [formData, setFormData] = useState({
-        title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', price: 0, description: ''
+        title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', priceDZD: 0, priceUSD: 0, description: ''
     });
 
     const languages = ['Arabic', 'Darija', 'French', 'English', 'German', 'Spanish', 'Italian', 'Chinese'];
@@ -49,7 +49,7 @@ const ManageCourses = () => {
                 setSuccessMsg(t('manageCourses.successCreate'));
                 setCourses([...courses, response.data]);
             }
-            setFormData({ title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', price: 0, description: '' });
+            setFormData({ title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', priceDZD: 0, priceUSD: 0, description: '' });
         } catch (err) {
             setError(err.response?.data?.error || 'Error saving course');
         }
@@ -57,13 +57,21 @@ const ManageCourses = () => {
 
     const handleEdit = (course) => {
         setEditingCourseId(course._id);
-        setFormData({ title: course.title, language: course.language, level: course.level, format: course.format, price: course.price, description: course.description || '' });
+        setFormData({ 
+            title: course.title, 
+            language: course.language, 
+            level: course.level, 
+            format: course.format, 
+            priceDZD: course.priceDZD !== undefined ? course.priceDZD : (course.price || 0), 
+            priceUSD: course.priceUSD !== undefined ? course.priceUSD : Math.round((course.price || 0) / 135), 
+            description: course.description || '' 
+        });
         setError(''); setSuccessMsg('');
     };
 
     const handleCancelEdit = () => {
         setEditingCourseId(null);
-        setFormData({ title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', price: 0, description: '' });
+        setFormData({ title: '', language: 'English', level: 'A1 (Beginner)', format: 'Group Class', priceDZD: 0, priceUSD: 0, description: '' });
     };
 
     const handleDelete = async (id) => {
@@ -122,8 +130,13 @@ const ManageCourses = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>{t('manageCourses.priceLabel')}</label>
-                        <input type="number" name="price" className="form-input" value={formData.price} onChange={handleInputChange} required min="0" />
+                        <label>{t('manageCourses.priceDZDLabel') || 'Price (DZD)'}</label>
+                        <input type="number" name="priceDZD" className="form-input" value={formData.priceDZD} onChange={handleInputChange} required min="0" />
+                    </div>
+
+                    <div className="form-group">
+                        <label>{t('manageCourses.priceUSDLabel') || 'Price (USD)'}</label>
+                        <input type="number" name="priceUSD" className="form-input" value={formData.priceUSD} onChange={handleInputChange} required min="0" />
                     </div>
 
                     <div className="form-group full-width">
@@ -169,7 +182,9 @@ const ManageCourses = () => {
                                     {course.description && <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>{course.description}</p>}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px' }}>
-                                    <span style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--primary)' }}>${course.price}</span>
+                                    <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--primary)' }}>
+                                        {(course.priceDZD !== undefined ? course.priceDZD : course.price)} DZD / ${(course.priceUSD !== undefined ? course.priceUSD : Math.round((course.price || 0) / 135))} USD
+                                    </span>
                                     <div className="btn-group">
                                         <button onClick={() => handleEdit(course)} className="btn btn-warning btn-sm">
                                             {t('manageCourses.editBtn')}

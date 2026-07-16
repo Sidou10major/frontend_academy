@@ -11,7 +11,7 @@ const ManageUsers = () => {
     const [editingUserId, setEditingUserId] = useState(null);
 
     const [formData, setFormData] = useState({
-        firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: ''
+        firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: '', residence: 'Algeria'
     });
 
     const languageOptions = ['Arabic', 'Darija', 'French', 'English', 'German', 'Spanish', 'Italian', 'Chinese'];
@@ -61,7 +61,7 @@ const ManageUsers = () => {
                 setSuccessMsg(t('manageUsers.successCreate', { role: formData.role }));
                 setUsers([...users, response.data]);
             }
-            setFormData({ firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: '' });
+            setFormData({ firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: '', residence: 'Algeria' });
         } catch (err) {
             setError(err.response?.data?.error || 'Error saving user');
         }
@@ -69,13 +69,13 @@ const ManageUsers = () => {
 
     const handleEdit = (user) => {
         setEditingUserId(user._id);
-        setFormData({ firstName: user.firstName, lastName: user.lastName, email: user.email, password: '', role: user.role, languages: user.languages || [], phone: user.phone || '' });
+        setFormData({ firstName: user.firstName, lastName: user.lastName, email: user.email, password: '', role: user.role, languages: user.languages || [], phone: user.phone || '', residence: user.residence || 'Algeria' });
         setError(''); setSuccessMsg('');
     };
 
     const handleCancelEdit = () => {
         setEditingUserId(null);
-        setFormData({ firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: '' });
+        setFormData({ firstName: '', lastName: '', email: '', password: '', role: 'student', languages: [], phone: '', residence: 'Algeria' });
     };
 
     const handleDelete = async (id) => {
@@ -144,6 +144,11 @@ const ManageUsers = () => {
                         <input type="tel" name="phone" className="form-input" value={formData.phone} onChange={handleInputChange} placeholder="+213xxxxxxxxx" />
                     </div>
 
+                    <div className="form-group">
+                        <label>{t('manageUsers.residenceLabel') || '📍 Residence / Country'}</label>
+                        <input type="text" name="residence" className="form-input" value={formData.residence} onChange={handleInputChange} placeholder="e.g., Algeria" />
+                    </div>
+
                     <div className="form-group full-width">
                         <label>{t('manageUsers.roleLabel')}</label>
                         <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
@@ -197,6 +202,7 @@ const ManageUsers = () => {
                             <th>{t('manageUsers.colName')}</th>
                             <th>{t('manageUsers.colEmail')}</th>
                             <th>{t('manageUsers.colPhone') || 'Phone'}</th>
+                            <th>{t('manageUsers.colResidence') || 'Residence'}</th>
                             <th>{t('manageUsers.colRole')}</th>
                             <th>{t('manageUsers.colLanguages')}</th>
                             <th>{t('manageUsers.colStatus')}</th>
@@ -209,6 +215,7 @@ const ManageUsers = () => {
                                 <td><strong>{u.firstName} {u.lastName}</strong></td>
                                 <td>{u.email}</td>
                                 <td>{u.phone || '—'}</td>
+                                <td>{u.residence || '—'}</td>
                                 <td>
                                     <span className={`badge ${u.role === 'admin' ? 'badge-warning' : u.role === 'teacher' ? 'badge-info' : 'badge-success'}`}>
                                         {u.role}

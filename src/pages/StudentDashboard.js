@@ -105,7 +105,7 @@ const StudentDashboard = () => {
                                 {payments.map(payment => (
                                     <div key={payment._id} style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-light)' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                                            <span style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)' }}>${payment.amount}</span>
+                                            <span style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)' }}>{payment.amount} {payment.currency || 'DZD'}</span>
                                             <span className={`badge ${paymentBadge(payment.status)}`}>{payment.status}</span>
                                         </div>
                                         <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>

@@ -14,7 +14,7 @@ const ManagePayments = () => {
     const [successMsg, setSuccessMsg] = useState('');
     const [editingPaymentId, setEditingPaymentId] = useState(null);
 
-    const [formData, setFormData] = useState({ student: '', session: '', amount: '', dueDate: '' });
+    const [formData, setFormData] = useState({ student: '', session: '', amount: '', dueDate: '', currency: 'DZD' });
 
     useEffect(() => { fetchData(); }, []);
 
@@ -31,7 +31,19 @@ const ManagePayments = () => {
         } catch (err) { setError('Failed to load financial data.'); setLoading(false); }
     };
 
-    const handleInputChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }); };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        if (name === 'student') {
+            const selectedStudent = students.find(s => s._id === value);
+            setFormData(prev => ({
+                ...prev,
+                student: value,
+                currency: selectedStudent?.currency || 'DZD'
+            }));
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
+    };
 
     const handleGenerateFee = async (e) => {
         e.preventDefault(); setError(''); setSuccessMsg('');
@@ -46,19 +58,19 @@ const ManagePayments = () => {
             }
             const updatedPayments = await api.get('/payments');
             setPayments(updatedPayments.data);
-            setFormData({ student: students.length > 0 ? students[0]._id : '', session: sessions.length > 0 ? sessions[0]._id : '', amount: '', dueDate: '' });
+            setFormData({ student: students.length > 0 ? students[0]._id : '', session: sessions.length > 0 ? sessions[0]._id : '', amount: '', dueDate: '', currency: 'DZD' });
         } catch (err) { setError(err.response?.data?.error || 'Failed to save fee.'); }
     };
 
     const handleEdit = (payment) => {
         setEditingPaymentId(payment._id);
-        setFormData({ student: payment.student?._id || '', session: payment.session?._id || '', amount: payment.amount, dueDate: payment.dueDate ? new Date(payment.dueDate).toISOString().split('T')[0] : '' });
+        setFormData({ student: payment.student?._id || '', session: payment.session?._id || '', amount: payment.amount, dueDate: payment.dueDate ? new Date(payment.dueDate).toISOString().split('T')[0] : '', currency: payment.currency || 'DZD' });
         setError(''); setSuccessMsg('');
     };
 
     const handleCancelEdit = () => {
         setEditingPaymentId(null);
-        setFormData({ student: students.length > 0 ? students[0]._id : '', session: sessions.length > 0 ? sessions[0]._id : '', amount: '', dueDate: '' });
+        setFormData({ student: students.length > 0 ? students[0]._id : '', session: sessions.length > 0 ? sessions[0]._id : '', amount: '', dueDate: '', currency: 'DZD' });
     };
 
     const handleDelete = async (id) => {
@@ -136,6 +148,13 @@ const ManagePayments = () => {
                         <input type="number" name="amount" className="form-input" value={formData.amount} onChange={handleInputChange} min="0" required />
                     </div>
                     <div className="form-group">
+                        <label>{t('managePayments.currencyLabel') || 'Currency'}</label>
+                        <select name="currency" className="form-select" value={formData.currency} onChange={handleInputChange} required>
+                            <option value="DZD">DZD</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
                         <label>{t('managePayments.dueDateLabel')}</label>
                         <input type="date" name="dueDate" className="form-input" value={formData.dueDate} onChange={handleInputChange} required />
                     </div>
@@ -172,7 +191,7 @@ const ManagePayments = () => {
                                 <tr key={p._id}>
                                     <td><strong>{p.student?.firstName} {p.student?.lastName}</strong></td>
                                     <td>{p.session?.course?.title || 'Unknown Course'}</td>
-                                    <td style={{ fontWeight: 600 }}>${p.amount}</td>
+                                    <td style={{ fontWeight: 600 }}>{p.amount} {p.currency || 'DZD'}</td>
                                     <td>{new Date(p.dueDate).toLocaleDateString()}</td>
                                     <td><span className={`badge ${paymentBadge(p.status)}`}>{t(`managePayments.${p.status.toLowerCase()}Badge`)}</span></td>
                                     <td>

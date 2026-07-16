@@ -121,7 +121,17 @@ const AnalyticsDashboard = () => {
                     </div>
                     <div className="stat-card danger">
                         <h3>{t('analytics.totalRevenue')}</h3>
-                        <p className="metric">${overview.totalRevenue.toLocaleString()}</p>
+                        <p className="metric" style={{ fontSize: '1.25rem' }}>
+                            {overview.revenueBreakdown ? (
+                                <>
+                                    {overview.revenueBreakdown.DZD?.toLocaleString()} DZD
+                                    <br />
+                                    ${overview.revenueBreakdown.USD?.toLocaleString()} USD
+                                </>
+                            ) : (
+                                `$${overview.totalRevenue.toLocaleString()}`
+                            )}
+                        </p>
                     </div>
                     <div className="stat-card info">
                         <h3>{t('analytics.pendingPayments')}</h3>
@@ -166,12 +176,12 @@ const AnalyticsDashboard = () => {
                         {revenueTrends.map((item, i) => (
                             <div key={i} className="bar-chart-col">
                                 <div
-                                    className="bar-chart-bar"
+                                    className={`bar-chart-bar ${item.currency === 'USD' ? 'accent' : ''}`}
                                     style={{ height: `${(item.totalRevenue / revenueMax) * 100}%` }}
                                 >
-                                    <div className="bar-tooltip">${item.totalRevenue.toLocaleString()}</div>
+                                    <div className="bar-tooltip">{item.totalRevenue?.toLocaleString()} {item.currency || 'DZD'}</div>
                                 </div>
-                                <div className="bar-chart-label">{item.period}</div>
+                                <div className="bar-chart-label">{item.period} ({item.currency || 'DZD'})</div>
                             </div>
                         ))}
                     </div>
@@ -272,7 +282,17 @@ const AnalyticsDashboard = () => {
                                         <td><span className="badge badge-primary">{cs.course.level}</span></td>
                                         <td>{cs.activeSessions}</td>
                                         <td>{cs.activeEnrollments}</td>
-                                        <td style={{ fontWeight: 600 }}>${cs.totalRevenue.toLocaleString()}</td>
+                                        <td style={{ fontWeight: 600, fontSize: '0.88rem', lineHeight: '1.3' }}>
+                                            {cs.revenueBreakdown ? (
+                                                <>
+                                                    {cs.revenueBreakdown.DZD?.toLocaleString()} DZD
+                                                    <br />
+                                                    ${cs.revenueBreakdown.USD?.toLocaleString()} USD
+                                                </>
+                                            ) : (
+                                                `$${cs.totalRevenue.toLocaleString()}`
+                                            )}
+                                        </td>
                                         <td>
                                             {cs.attendanceRate !== null ? (
                                                 <span className={`badge ${cs.attendanceRate >= 80 ? 'badge-success' : cs.attendanceRate >= 60 ? 'badge-warning' : 'badge-danger'}`}>

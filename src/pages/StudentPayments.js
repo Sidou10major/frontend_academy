@@ -52,7 +52,7 @@ const StudentPayments = () => {
                             {payments.map(payment => (
                                 <tr key={payment._id}>
                                     <td><strong>{payment.session?.course?.title || 'Language Course'}</strong></td>
-                                    <td style={{ fontWeight: 600, fontSize: '1.05rem' }}>${payment.amount}</td>
+                                    <td style={{ fontWeight: 600, fontSize: '1.05rem' }}>{payment.amount} {payment.currency || 'DZD'}</td>
                                     <td>{new Date(payment.dueDate).toLocaleDateString()}</td>
                                     <td>
                                         <span className={`badge ${paymentBadge(payment.status)}`}>

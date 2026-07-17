@@ -660,5 +660,12 @@
         "successAdd": "Resource successfully shared!",
         "confirmDelete": "Are you sure you want to delete this resource?",
         "successDelete": "Resource successfully removed."
+    },
+    "adminTeacherRequests": {
+        "title": "Manage Teacher Requests",
+        "tabLeaves": "Leave Requests",
+        "tabAvailabilities": "Teacher Availabilities",
+        "leavesCardTitle": "Incoming Teacher Leave Requests",
+        "availTitle": "Teacher Weekly Availability Schedule"
     }
 }

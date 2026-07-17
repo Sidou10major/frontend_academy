@@ -655,5 +655,12 @@
         "successAdd": "تمت مشاركة المورد بنجاح!",
         "confirmDelete": "هل أنت متأكد من رغبتك في حذف هذا المورد؟",
         "successDelete": "تم حذف المورد بنجاح."
+    },
+    "adminTeacherRequests": {
+        "title": "إدارة طلبات المعلمين",
+        "tabLeaves": "طلبات الإجازات",
+        "tabAvailabilities": "توفر المعلمين",
+        "leavesCardTitle": "طلبات إجازات المعلمين الواردة",
+        "availTitle": "جدول توفر المعلمين الأسبوعي"
     }
 }

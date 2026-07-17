@@ -655,5 +655,12 @@
         "successAdd": "Ressource partagée avec succès !",
         "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette ressource ?",
         "successDelete": "Ressource supprimée avec succès."
+    },
+    "adminTeacherRequests": {
+        "title": "Gérer les Demandes des Enseignants",
+        "tabLeaves": "Demandes de Congé",
+        "tabAvailabilities": "Disponibilités des Enseignants",
+        "leavesCardTitle": "Demandes de Congé Entrantes",
+        "availTitle": "Planning Hebdomadaire des Disponibilités"
     }
 }

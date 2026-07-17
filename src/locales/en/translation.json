@@ -667,5 +667,8 @@
         "tabAvailabilities": "Teacher Availabilities",
         "leavesCardTitle": "Incoming Teacher Leave Requests",
         "availTitle": "Teacher Weekly Availability Schedule"
+    },
+    "adminGrades": {
+        "title": "Student Progress & Grades Directory"
     }
 }

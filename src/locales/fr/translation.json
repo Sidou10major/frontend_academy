@@ -662,5 +662,8 @@
         "tabAvailabilities": "Disponibilités des Enseignants",
         "leavesCardTitle": "Demandes de Congé Entrantes",
         "availTitle": "Planning Hebdomadaire des Disponibilités"
+    },
+    "adminGrades": {
+        "title": "Annuaire des Progrès & Notes des Étudiants"
     }
 }

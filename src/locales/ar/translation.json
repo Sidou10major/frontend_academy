@@ -662,5 +662,8 @@
         "tabAvailabilities": "توفر المعلمين",
         "leavesCardTitle": "طلبات إجازات المعلمين الواردة",
         "availTitle": "جدول توفر المعلمين الأسبوعي"
+    },
+    "adminGrades": {
+        "title": "دليل علامات وتقدم الطلاب"
     }
 }

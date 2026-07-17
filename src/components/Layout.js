@@ -56,6 +56,8 @@ const Layout = () => {
                             <li><Link to="/admin/enrollments" className={navLinkClass('/admin/enrollments')}>📝 {t('sidebar.enrollments')}</Link></li>
                             <li><Link to="/admin/attendance" className={navLinkClass('/admin/attendance')}>✅ {t('sidebar.attendanceSheets')}</Link></li>
                             <li><Link to="/admin/teacher-attendance" className={navLinkClass('/admin/teacher-attendance')}>🧑‍🏫 {t('sidebar.teacherAttendance')}</Link></li>
+                            <li><Link to="/admin/teacher-portal" className={navLinkClass('/admin/teacher-portal')}>🧑‍🏫 {t('sidebar.teacherRequests') || 'Teacher Requests'}</Link></li>
+                            <li><Link to="/admin/grades" className={navLinkClass('/admin/grades')}>📝 {t('sidebar.studentGradesAdmin') || 'Student Grades'}</Link></li>
                             <li><Link to="/admin/payments" className={navLinkClass('/admin/payments')}>💰 {t('sidebar.finances')}</Link></li>
                             <li><Link to="/admin/payroll" className={navLinkClass('/admin/payroll')}>💵 {t('sidebar.payroll') || 'Payroll Tracker'}</Link></li>
                         </>

@@ -95,9 +95,11 @@ const ManageUsers = () => {
         const nextStatus = !user.isActive;
         setError(''); setSuccessMsg('');
         try {
-            const response = await api.put(`/users/${user._id}`, { isActive: nextStatus });
+            const endpoint = nextStatus ? `/users/${user._id}/unblock` : `/users/${user._id}/block`;
+            const response = await api.put(endpoint);
+            const updatedUser = response.data.user;
             setSuccessMsg(t('manageUsers.successStatus', { status: nextStatus ? t('manageUsers.statusActive') : t('manageUsers.statusBlocked') }));
-            setUsers(users.map(u => u._id === user._id ? response.data : u));
+            setUsers(users.map(u => u._id === user._id ? updatedUser : u));
         } catch (err) {
             setError('Failed to update user status.');
         }

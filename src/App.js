@@ -29,6 +29,8 @@ import CertificateView from './pages/CertificateView';
 import TeacherSelfService from './pages/TeacherSelfService';
 import ManagePayroll from './pages/ManagePayroll';
 import PlacementTestView from './pages/PlacementTestView';
+import ManageTeacherRequests from './pages/ManageTeacherRequests';
+import ManageGradesAdmin from './pages/ManageGradesAdmin';
 
 function App() {
   return (
@@ -81,6 +83,18 @@ function App() {
             <Route path="/admin/sessions" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <ManageSessions />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/teacher-portal" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageTeacherRequests />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/admin/grades" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ManageGradesAdmin />
               </ProtectedRoute>
             } />
 

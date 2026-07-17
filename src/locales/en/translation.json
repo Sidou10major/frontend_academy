@@ -4,7 +4,9 @@
         "subtitle": "Sign in to your account",
         "email": "Email Address",
         "password": "Password",
-        "submit": "Sign In"
+        "submit": "Sign In",
+        "placementPrompt": "Not sure about your level?",
+        "placementLink": "Take Placement Test 📝"
     },
     "sidebar": {
         "title": "I speak International",
@@ -33,7 +35,9 @@
         "lightMode": "Light Mode",
         "teacherAttendance": "Teacher Attendance",
         "gradeBook": "Grade Book",
-        "myProgress": "My Progress"
+        "myProgress": "My Progress",
+        "teacherRequests": "Teacher Requests",
+        "studentGradesAdmin": "Student Grades"
     },
     "adminDash": {
         "title": "Admin Overview",
@@ -65,7 +69,10 @@
         "noPayments": "No payment history found.",
         "due": "Due:",
         "paidOn": "Paid on",
-        "pleasePay": "Please pay at the administration desk."
+        "pleasePay": "Please pay at the administration desk.",
+        "placementTitle": "Placement Test",
+        "placementDesc": "Want to test your proficiency level again? Try our online placement test.",
+        "placementBtn": "Take Placement Test"
     },
     "teacherDash": {
         "title": "Instructor Dashboard",

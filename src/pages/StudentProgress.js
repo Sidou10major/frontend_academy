@@ -24,10 +24,11 @@ const StudentProgress = () => {
         const fetchInitialData = async () => {
             try {
                 const enrollmentsRes = await api.get(`/enrollments/student/${studentId}`);
-                setEnrollments(enrollmentsRes.data);
+                const validEnrollments = (enrollmentsRes.data || []).filter(e => e && e.session);
+                setEnrollments(validEnrollments);
                 
-                if (enrollmentsRes.data.length > 0) {
-                    const firstSession = enrollmentsRes.data[0].session._id;
+                if (validEnrollments.length > 0) {
+                    const firstSession = validEnrollments[0].session._id;
                     setSelectedSessionId(firstSession);
                     await fetchSessionSpecificData(firstSession);
                 }

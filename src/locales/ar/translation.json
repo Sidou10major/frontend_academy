@@ -4,7 +4,9 @@
         "subtitle": "سجل الدخول إلى حسابك",
         "email": "البريد الإلكتروني",
         "password": "كلمة المرور",
-        "submit": "تسجيل الدخول"
+        "submit": "تسجيل الدخول",
+        "placementPrompt": "هل أنت غير متأكد من مستواك؟",
+        "placementLink": "خذ اختبار تحديد المستوى 📝"
     },
     "sidebar": {
         "title": "I speak International",
@@ -33,7 +35,9 @@
         "lightMode": "الوضع المضيء",
         "teacherAttendance": "حضور المعلمين",
         "gradeBook": "دفتر العلامات",
-        "myProgress": "تقدمي الدراسي"
+        "myProgress": "تقدمي الدراسي",
+        "teacherRequests": "طلبات المعلمين",
+        "studentGradesAdmin": "علامات الطلاب"
     },
     "adminDash": {
         "title": "نظرة عامة للإدارة",
@@ -65,7 +69,10 @@
         "noPayments": "لم يتم العثور على سجل مدفوعات.",
         "due": "مستحق:",
         "paidOn": "تم الدفع في",
-        "pleasePay": "يرجى الدفع في مكتب الإدارة."
+        "pleasePay": "يرجى الدفع في مكتب الإدارة.",
+        "placementTitle": "اختبار تحديد المستوى",
+        "placementDesc": "هل تريد اختبار مستوى كفاءتك مرة أخرى؟ جرب اختبار تحديد المستوى عبر الإنترنت.",
+        "placementBtn": "إجراء اختبار تحديد المستوى"
     },
     "teacherDash": {
         "title": "لوحة قيادة المعلم",

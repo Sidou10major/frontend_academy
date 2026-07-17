@@ -4,7 +4,9 @@
         "subtitle": "Connectez-vous à votre compte",
         "email": "Adresse Email",
         "password": "Mot de passe",
-        "submit": "Se connecter"
+        "submit": "Se connecter",
+        "placementPrompt": "Vous hésitez sur votre niveau ?",
+        "placementLink": "Passez le test de niveau 📝"
     },
     "sidebar": {
         "title": "I speak International",
@@ -33,7 +35,9 @@
         "lightMode": "Mode Clair",
         "teacherAttendance": "Présence Enseignant",
         "gradeBook": "Carnet de Notes",
-        "myProgress": "Mon Progrès"
+        "myProgress": "Mon Progrès",
+        "teacherRequests": "Demandes des Enseignants",
+        "studentGradesAdmin": "Notes des Étudiants"
     },
     "adminDash": {
         "title": "Vue d'ensemble Admin",
@@ -65,7 +69,10 @@
         "noPayments": "Aucun historique de paiement trouvé.",
         "due": "Échéance :",
         "paidOn": "Payé le",
-        "pleasePay": "Veuillez payer au bureau d'administration."
+        "pleasePay": "Veuillez payer au bureau d'administration.",
+        "placementTitle": "Test de Niveau",
+        "placementDesc": "Vous voulez tester à nouveau votre niveau de compétence ? Essayez notre test de niveau en ligne.",
+        "placementBtn": "Passer le Test de Niveau"
     },
     "teacherDash": {
         "title": "Tableau de Bord Professeur",
